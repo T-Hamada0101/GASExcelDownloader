@@ -12,7 +12,7 @@ GAS Download Spreadsheet as Excel format(Only Value)
         Logger.log(PropertiesService.getScriptProperties().getProperty("url"));  
     }
 
-2 :run setUrlProperty()
+2 :run setUrlProperty()  
   setUrlProperty()を実行しPropertiesServiceに書き込む
 
 # Usage
