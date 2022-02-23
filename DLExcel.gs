@@ -1,7 +1,8 @@
 //setProperty　読み込むシートのURLをsetして１度だけ実行
 //"https://docs.google.com/spreadsheets/d/****************/edit#gid=********";
 function setUrlProperty(){
-  PropertiesService.getScriptProperties().setProperty("url","https:***");
+  const myURL = "https://docs.google.com/spreadsheets/d/****************/edit#gid=********";
+  PropertiesService.getScriptProperties().setProperty("url",myURL);
   Logger.log(PropertiesService.getScriptProperties().getProperty("url"));
 }
 
