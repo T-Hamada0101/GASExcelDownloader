@@ -8,7 +8,7 @@ GAS Download Spreadsheet as Excel format(Only Value)
   取り込みたいシートのURLをset
   function setUrlProperty()内myURLの値を取り込みたいシートURLに変更()  
     function setUrlProperty(){  
-        const myURL = "https://docs.google.com/spreadsheets/d/****************/edit#gid=********"; ####<-change here
+####    const myURL = "https://docs.google.com/spreadsheets/d/****************/edit#gid=********"; <-change here
         PropertiesService.getScriptProperties().setProperty("url",myURL);  
         Logger.log(PropertiesService.getScriptProperties().getProperty("url"));  
     }
