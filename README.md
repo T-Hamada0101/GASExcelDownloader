@@ -11,7 +11,7 @@ GAS Download Spreadsheet as Excel format(Only Value)
   ####    const myURL = "https://docs.google.com/spreadsheets/d/****************/edit#gid=********"; <-change here  
   
     function setUrlProperty(){  
-        const myURL = "https://docs.google.com/spreadsheets/d/****************/edit#gid=********"; <-change here
+        const myURL = "https://docs.google.com/spreadsheets/d/****************/edit#gid=********";  
         PropertiesService.getScriptProperties().setProperty("url",myURL);  
         Logger.log(PropertiesService.getScriptProperties().getProperty("url"));  
     }
