@@ -91,32 +91,11 @@ function showDialog(thisBook,destinationSh,sheetName,tempSheetName) {
   //Logger.log("showDialog");
   const spreadSheetId = thisBook.getId();
   const sheetId       = destinationSh.getSheetId();
-  //const tempSheetName =destinationSh.getSheetName();
   const url = 'https://docs.google.com/spreadsheets/d/' + spreadSheetId + '/export?format=xlsx&gid=' + sheetId;
-　//Browser.msgBox(tempSheetName);
-  //button onclick JavaScript : tempSheet削除;ダイアログclose;
-  //const jsCode0 = 'google.script.run.deleatSheet('+ tempSheetName +');google.script.host.close();';
-  //const jsCode1 = 'google.script.run.deleatSheet('+ tempSheetName +');';
   const jsCode = 'google.script.host.close();';
   const html = HtmlService.createHtmlOutput('<p>リンクをクリックしてダウンロードしてください。</p>')
     .append('<p style="text-align:center;"><a href="' + url +'" style="text-align: center;">Excelファイル<a/></p>')
     .append('<div style="text-align:right;"><input type="button" value="閉じる" onclick="'+ jsCode +'" /></div>')
     .setWidth(500).setHeight(200);
   SpreadsheetApp.getUi().showModalDialog(html, '「'+sheetName+'」ダウンロード');
-}
-
-function deleatSheet(tempSheetName){
-  Logger.log()
-  const thisBook = SpreadsheetApp.getActiveSpreadsheet();
-  const sheets  = thisBook.getSheets();
-  let terget;
-  for (const sheet of sheets) {
-   if (tempSheetName === sheet.getSheetName()){
-     terget = sheet;
-     break;
-   }
- }
-  if(terget != undefined){
-    thisBook.deleteSheet(terget);
-  }
 }
