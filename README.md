@@ -1,5 +1,7 @@
 # GASExcelDownloader
 GAS Download Spreadsheet as Excel format(Only Value)
+スプレッドシートのボタン等から実行し指定したシートを値のみの*.xlsxでダウンロード
+
 
 1 :First, set URL to PropertiesService
 //myURLの値を取り込みたいシートURLに変更
