@@ -2,9 +2,9 @@
 GAS Download Spreadsheet as Excel format(Only Value)  
 スプレッドシート上のボタン等から実行、指定したシートを値のみの*.xlsxでダウンロード  
 
-# Setting
+## Setting
 
-1 :First, set myURL to PropertiesService  
+###1 :First, set myURL to PropertiesService  
   取り込みたいシートのURLをset
   function setUrlProperty()内myURLの値を取り込みたいシートURLに変更()  
   
@@ -16,9 +16,9 @@ GAS Download Spreadsheet as Excel format(Only Value)
         Logger.log(PropertiesService.getScriptProperties().getProperty("url"));  
     }
 
-2 :run setUrlProperty()  
+###2 :run setUrlProperty()  
   setUrlProperty()を実行しPropertiesServiceに書き込む
 
-# Usage
+## Usage
   run getExcelSheet()  
   スプレッドシートの画像ボタンにgetExcelSheetを設定し実行  
