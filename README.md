@@ -17,7 +17,7 @@ GAS Download Spreadsheet as Excel format(Only Value)
     }
 
 ### 2 :run setUrlProperty()  
-  setUrlProperty()を実行しPropertiesServiceに書き込む
+  エディターからsetUrlProperty()を実行しPropertiesServiceに書き込む
 
 ## Usage
   run getExcelSheet()  
