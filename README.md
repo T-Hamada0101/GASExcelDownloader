@@ -1,20 +1,20 @@
 # GASExcelDownloader
-GAS Download Spreadsheet as Excel format(Only Value)
-スプレッドシートのボタン等から実行し指定したシートを値のみの*.xlsxでダウンロード
+GAS Download Spreadsheet as Excel format(Only Value)  
+スプレッドシートのボタン等から実行し指定したシートを値のみの*.xlsxでダウンロード  
 
 # Setting
 
-1 :First, set URL to PropertiesService
-//myURLの値を取り込みたいシートURLに変更
-function setUrlProperty(){
-  const myURL = "https://docs.google.com/spreadsheets/d/****************/edit#gid=********";
-  PropertiesService.getScriptProperties().setProperty("url",myURL);
-  Logger.log(PropertiesService.getScriptProperties().getProperty("url"));
+1 :First, set URL to PropertiesService  
+//myURLの値を取り込みたいシートURLに変更  
+function setUrlProperty(){  
+  const myURL = "https://docs.google.com/spreadsheets/d/****************/edit#gid=********";  
+  PropertiesService.getScriptProperties().setProperty("url",myURL);  
+  Logger.log(PropertiesService.getScriptProperties().getProperty("url"));  
 }
 
 2 :run setUrlProperty()
 
 
 # Usage
-  run getExcelSheet()
-  スプレッドシートの画像ボタンにgetExcelSheetを設定し実行
+  run getExcelSheet()  
+  スプレッドシートの画像ボタンにgetExcelSheetを設定し実行  
