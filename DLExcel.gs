@@ -105,8 +105,8 @@ function showDialog(thisBook,destinationSh,sheetName,tempSheetName) {
   const html = HtmlService.createHtmlOutput()
     .append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">')
     .append('<br><div class="card"><div class="card-header"><h5><p>ダウンロードリンク</p></h5></div>')
-    .append('<div class="card-body"><h4><p style="text-align:center;"><a href="' + url +'">'+ dlFileName + '<a/></p></h4></div></div>')
+    .append('<br><div class="card-body"><h4><p style="text-align:center;"><a href="' + url +'">'+ dlFileName + '<a/></p></h4></div><br></div>')
     .append('<br><div style="text-align:right;"><input type="button"class="btn btn-primary btn-block" value="閉じる" onclick="'+ jsCode +'" /></div>')
-    .setWidth(600).setHeight(250);
+    .setWidth(600).setHeight(300);
   SpreadsheetApp.getUi().showModalDialog(html, 'シート「'+sheetName+'」のダウンロード');
 }
