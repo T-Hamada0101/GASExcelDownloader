@@ -40,6 +40,7 @@ class TargetSheet {
     return false;
   }
 }
+
 class Timer {
   constructor() {
     this.startTime = new Date();
@@ -51,20 +52,26 @@ class Timer {
   }
 }
 
+class Ui{
+  constructor() {
+    this.ui = new Date();
+  }
+}
+
+
 function getExcelSheet(){
-  const Time = new Timer();
+  //const Time = new Timer();
+  const ui = SpreadsheetApp.getUi();
   const Source = new TargetSheet();
-  Logger.log("tryGetSheet" + Time.elapsedTime());
+  //Logger.log("tryGetSheet:" + Time.elapsedTime());
   if(!Source.tryGetSheet()){
-    Source.ui.alert("シートが取得できませんでした");
+    ui.alert("シートが取得できませんでした");
     return;
   }
-  Logger.log("SheetGet" + Time.elapsedTime());
+  //Logger.log("SheetGet:" + Time.elapsedTime());
   const sheetName = Source.sheet.getSheetName();
-  const result = Browser.msgBox("「" + sheetName + "」をExcelに変換します",Browser.Buttons.OK_CANCEL);
-  if(result === "cancel"){
-    return;
-  }
+  const result = ui.alert("「" + sheetName + "」をExcelに変換します",ui.ButtonSet.OK_CANCEL);
+  if(result == "CANCEL")return;
  
   //数式のままでは正確にExcel化出来ないので一時シートに値のみを入れる
   const lastRow    = Source.sheet.getLastRow();
@@ -80,9 +87,9 @@ function getExcelSheet(){
     destinationSh.setName("_temp_"+ sheetName);
   }
   destinationSh.getRange(1,1,lastRow,lastColumn).setValues(copyValue);//値のみペースト
-  Logger.log("showDialog" + Time.elapsedTime());
+  //Logger.log("showDialog:" + Time.elapsedTime());
   showDialog(thisBook,destinationSh,sheetName);
-  Logger.log("end" + Time.elapsedTime());
+  //Logger.log("end:" + Time.elapsedTime());
 }
 
 
@@ -91,12 +98,15 @@ function showDialog(thisBook,destinationSh,sheetName,tempSheetName) {
   // 選択中のスプレッドシート
   //Logger.log("showDialog");
   const spreadSheetId = thisBook.getId();
-  const sheetId       = destinationSh.getSheetId();
+  const sheetId = destinationSh.getSheetId();
+  const dlFileName =thisBook.getName() +  ".xlsx";
   const url = 'https://docs.google.com/spreadsheets/d/' + spreadSheetId + '/export?format=xlsx&gid=' + sheetId;
   const jsCode = 'google.script.host.close();';
-  const html = HtmlService.createHtmlOutput('<p>リンクをクリックしてダウンロードしてください。</p>')
-    .append('<p style="text-align:center;"><a href="' + url +'" style="text-align: center;">Excelファイル<a/></p>')
-    .append('<div style="text-align:right;"><input type="button" value="閉じる" onclick="'+ jsCode +'" /></div>')
-    .setWidth(500).setHeight(200);
-  SpreadsheetApp.getUi().showModalDialog(html, '「'+sheetName+'」ダウンロード');
+  const html = HtmlService.createHtmlOutput()
+    .append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">')
+    .append('<br><div class="card"><div class="card-header"><h5><p>ダウンロードリンク</p></h5></div>')
+    .append('<div class="card-body"><h4><p style="text-align:center;"><a href="' + url +'">'+ dlFileName + '<a/></p></h4></div></div>')
+    .append('<br><div style="text-align:right;"><input type="button"class="btn btn-primary btn-block" value="閉じる" onclick="'+ jsCode +'" /></div>')
+    .setWidth(600).setHeight(250);
+  SpreadsheetApp.getUi().showModalDialog(html, 'シート「'+sheetName+'」のダウンロード');
 }
