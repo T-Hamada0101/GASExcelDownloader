@@ -1,6 +1,8 @@
 # GASExcelDownloader
 GAS Download Spreadsheet as Excel format(Only Value)  
-スプレッドシート上のボタン等から実行、指定したシートを値のみの*.xlsxでダウンロード  
+指定したスプレッドシートを（セルの数式を値に置き換えた上で）*.xlsx形式でダウンロード  
+
+スプレッドシートのメニューからダウンロードした場合に、数式があると正しく取得できない為に作成
 
 ## Setting
 
@@ -10,11 +12,13 @@ GAS Download Spreadsheet as Excel format(Only Value)
   
   ####    const myURL = "https://docs.google.com/spreadsheets/d/****************/edit#gid=********"; <-change here  
   
+  
     function setUrlProperty(){  
         const myURL = "https://docs.google.com/spreadsheets/d/****************/edit#gid=********";  
         PropertiesService.getScriptProperties().setProperty("url",myURL);  
         Logger.log(PropertiesService.getScriptProperties().getProperty("url"));  
     }
+
 
 ### 2 :run setUrlProperty()  
   エディターからsetUrlProperty()を実行しPropertiesServiceに書き込む
